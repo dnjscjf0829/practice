@@ -1,0 +1,212 @@
+<!-- html 틀 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk Moa</title>
+    <link rel="stylesheet" href="./css/talk.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="./js/talk.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    <!-- 1. 각 section 시작과 끝 주석으로 달기 -->
+    <!-- 2. header와 footer는 모든 페이지 통일 -->
+    <!-- 3. 각 section의 클래스명은 주석으로 같이 써놓기 -->
+    <!-- 4. 그룹화 또는 통일시켜야 하는 경우를 대비해 class로 css 작업 -->
+    <!-- 5. css에 색상변수 만들어서 사용하기 -->
+    <!-- 6. 버튼 클래스 변수는 임의의 변수 뒤에 _btn 붙여주기 (ex. file_btn, image_btn ...) -->
+
+</head>
+<body>
+    <!-- header [class명 header]-->
+    <header class="header">
+        <a href="./index.html" class="logo">TALK MOA</a>
+    </header>
+    <!-- header 끝 -->
+
+    <!-- body & footer [class명 body-wrapper]-->
+    <div class="body-wrapper">
+        <!-- body의 전체 뼈대 [class명 body-content] -->
+        <section class="body-content">
+            <!-- 그림자가 있는 박스 테두리가 필요할 경우 [class명 box] / 특정부분에 추가로 css를 넣을경우 해당 부분에 주석을 달고 임의의 변수 설정 -->
+
+            <div class="section_back">
+                <i class="bi bi-arrow-bar-left"></i>
+                <button onclick="history.back()" class="btn">뒤로 가기</button>
+            </div>
+    
+            <p class="section_title">[<span>팀프로젝트1</span>] 채팅방에서 나눈 대화입니다</p>
+            <div class="section_title">
+                <input type="text" placeholder="검색할 단어를 입력해주세요" class="search_input">
+                <input type="button" value="검색" class="search_btn">
+            </div>
+
+            <div class="box_six">
+                <div class="box_first">
+                    <p class="box_content_bold" style="font-weight: 400;">
+                        대화자 : 
+                        <span>노경현</span> (<span>12313</span>)회, 
+                        <span>배성흥</span> (<span>1231</span>)회, 
+                        <span>이준형</span> (<span>123</span>)회, 
+                        <span>김원철</span> (<span>120</span>)회
+                    </p>
+                    <div class="box_content_rank char-area">
+                        <div id="box_word_cloud" style="width:100%; height:100%;"></div>
+                    </div>
+                    <script>
+                        anychart.onDocumentReady(function () {
+                            var data = [
+                                {
+                                    "x": "응가",
+                                    "value": 590000000,
+                                    category: "Sino-Tibetan"
+                                },
+                                {
+                                    "x": "안녕",
+                                    "value": 283000000,
+                                    category: "Indo-European"
+                                },
+                                {
+                                    "x": "ㅎㅇㅎㅇ",
+                                    "value": 544000000,
+                                    category: "Indo-European"
+                                },
+                                {
+                                    "x": "ㅇㅋㅇㅋ",
+                                    "value": 527000000,
+                                    category: "Indo-European"
+                                }, {
+                                    "x": "ㅋㅋㅋㅋㅋ",
+                                    "value": 422000000,
+                                    category: "Afro-Asiatic"
+                                }, {
+                                    "x": "오케~",
+                                    "value": 620000000,
+                                    category: "Afro-Asiatic"
+                                },{
+                                    "x": "기기",
+                                    "value": 720000000,
+                                    category: "Afro-Asiatic"
+                                },
+                                {
+                                    "x": "반갑습니다",
+                                    "value": 273000000,
+                                    category: "Indo-European"
+                                },
+                                {
+                                    "x": "롤",
+                                    "value": 144000000,
+                                    category: "Indo-European"
+                                },
+                                {
+                                    "x": "게임",
+                                    "value": 377000000,
+                                    category: "Indo-European"
+                                }, {
+                                    "x": "하하하ㅏ",
+                                    "value": 312000000,
+                                    category: "Afro-Asiatic"
+                                }, {
+                                    "x": "인정~",
+                                    "value": 990000000,
+                                    category: "Afro-Asiatic"
+                                },{
+                                    "x": "핼롱",
+                                    "value": 870000000,
+                                    category: "Afro-Asiatic"
+                                }
+                            ];
+                            var chart = anychart.tagCloud(data);
+                            chart.angles([0]);
+                            chart.container("box_word_cloud");
+                            // chart.getCredits().setEnabled(false);
+                            chart.draw();
+                        });
+                    </script>
+                </div>
+            </div>
+    
+            <div class="box_six">
+                <div class="box_color">
+                    <img src="./image/color-box-image1.png" alt="" class="box_image">
+                    <div class="box_bottom purple">
+                        <p class="box_content_bold"><br>미디어를 주고받은 횟수<br>(사진 / 동영상 / 첨부파일)</p>
+                        <p class="box_content"><span>1</span>위. <span>배성흥</span> (<span>3132</span>회)</p>
+                        <p class="box_content"><span>2</span>위. <span>노경현</span> (<span>333</span>회)</p>
+                    </div>
+                </div>
+                <div class="box_color">
+                    <div class="box_top white-purple">
+                        <p class="box_content_bold">이모티콘을 주고받은 횟수</p><br>
+                        <p class="box_content"><span>1</span>위. <span>배성흥</span> (<span>1235</span>회)</p>
+                        <p class="box_content"><span>2</span>위. <span>노경현</span> (<span>980</span>회)</p>
+                    </div>
+                    <img src="./image/color-box-image2.png" alt="" class="box_image">
+                </div>
+                <div class="box_color">
+                    <div class="box_top pink">
+                        <p class="box_content_bold">우리가 가장 조용한 시간 찾기</p>
+                        <p class="box_content"><span>1</span>위. <span>03시 ~ 04시</span> (<span>100</span>회)</p>
+                        <p class="box_content"><span>2</span>위. <span>08시 ~ 09시</span> (<span>256</span>회)</p>
+                        <br>
+                        <p class="box_content"><a href="/statistics_graph.html" class="text_center">자세히보기</a></p>
+                    </div>
+                    <img src="./image/color-box-image3.png" alt="" class="box_image">
+                </div>
+            </div>
+    
+            <div class="box_six">
+                <div class="box_color">
+                    <img src="./image/color-box-image4.png" alt="" class="box_image">
+                    <div class="box_bottom green">
+                        <p class="box_content_bold">우리가 가장 활발한 시간 찾기</p>
+                        <p class="box_content"><span>1</span>위. <span>10시 ~ 11시</span> (<span>122332</span>회)</p>
+                        <p class="box_content"><span>2</span>위. <span>23시 ~ 24시</span> (<span>100009</span>회)</p>
+                        <br>
+                        <p class="box_content"><a href="/statistics_graph.html" class="text_center">자세히보기</a></p>
+                    </div>
+                </div>
+                <div class="box_color">
+                    <div class="box_top yellow">
+                        <br><br>
+                        <p class="box_content_bold">
+                            <a href="./index.html" class="box_content_bold go_home">HOME으로 이동</a>
+                        </p>
+                    </div>
+                    <img src="./image/color-box-image5.png" alt="" class="box_image">
+                </div>
+                <div class="box_color">
+                    <img src="./image/color-box-image6.png" alt="" class="box_image">
+                    <div class="box_bottom blue">
+                        <p class="box_content_bold"><br><br>공유하기</p>
+
+                        <button onclick="shareKakao()">카카오톡으로 공유하기</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- body의 전체 뼈대 끝 -->
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="center_info">
+                <span class="link"><a href="#">운영정책</a></span>
+                <span class="link"><a href="#">브랜드보호정책</a></span>
+                <span class="link"><a href="#">이용약관</a></span>
+                <span class="link"><a href="#">공지사항</a></span>
+                <span class="link"><a href="#">개인정보처리방침</a></span>
+            </div>
+    
+            <div class="center_info">©TALKMOA</div>
+            <div class="center_info">Tel. 010.111.2222 | @TalkMOA_star | talkmoa123@naver.com </div>
+        </footer>
+        <!-- footer 끝 -->
+    </div>
+    <!-- body & footer 끝 -->
+</body>
+</html>
